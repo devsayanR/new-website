@@ -13,7 +13,6 @@ import Testimonials from "@/components/Testimonials";
 import { getAllPosts } from "@/utils/markdown";
 import SociableKitWidget from "@/components/LinkdinPosts/index";
 import { Metadata } from "next";
-import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: "Play Next.js - SaaS Starter Kit and Boilerplate for Next.js",
