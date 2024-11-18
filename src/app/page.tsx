@@ -11,6 +11,7 @@ import Pricing from "@/components/Pricing";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import { getAllPosts } from "@/utils/markdown";
+import SociableKitWidget from "@/components/LinkdinPosts/index";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function Home() {
       <ScrollUp />
       <Hero />
       <Features />
+      <SociableKitWidget />
       <About />
       <CallToAction />
       <Pricing />
