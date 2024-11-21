@@ -13,7 +13,7 @@ const Features = () => {
           paragraph="There are Many Sponsers For Encouraging Our Potential To Embark the World."
         />
 
-        <div className="-mx-[100%] flex flex-wrap lg:mt-20">
+        <div className="-mx-10 flex flex-wrap lg:mt-20">
           <InfiniteCarousel/>
         </div>
       </div>
