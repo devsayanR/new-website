@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
 <>
+<Breadcrumb pageName="Product Page" />
 <EventBanner/>
     </>
   );
