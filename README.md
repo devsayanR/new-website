@@ -74,7 +74,19 @@ We welcome contributions! Here's how you can help:
 For more details, see our [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ---
+<div>
+<h2><font size="6"><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /> Contributors </font></h2>
+</div>
+<br>
 
+<center>
+<a href="https://github.com/DEVRhylme-Foundation/new-website/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=DEVRhylme-Foundation/new-website" />
+</a>
+</center>
+<br>
+
+<br>
 ## ⭐ Support Us
 
 If you find this project useful, consider giving it a star 🌟! Your support helps us grow and reach more developers.
