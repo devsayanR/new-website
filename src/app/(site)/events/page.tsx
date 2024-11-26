@@ -1,6 +1,7 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Contact from "@/components/Contact";
 import { Metadata } from "next";
+import EventBanner from "@/components/eventData/eventBanner";
 
 export const metadata: Metadata = {
   title:
@@ -10,10 +11,8 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <>
-{/*<Breadcrumb pageName="Contact Page" />*/}
-
-      <Contact />
+<>
+<EventBanner/>
     </>
   );
 };

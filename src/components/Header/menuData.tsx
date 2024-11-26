@@ -15,8 +15,8 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Pricing",
-    path: "/pricing",
+    title: "Product",
+    path: "/product",
     newTab: false,
   },
   {
@@ -27,8 +27,8 @@ const menuData: Menu[] = [
   },
   {
     id: 5,
-    title: "Blog",
-    path: "/blogs",
+    title: "Event",
+    path: "/events",
     newTab: false,
   },
   {
@@ -44,8 +44,8 @@ const menuData: Menu[] = [
       },
       {
         id: 62,
-        title: "Pricing Page",
-        path: "/pricing",
+        title: "Product Page",
+        path: "/product",
         newTab: false,
       },
       {
@@ -56,26 +56,8 @@ const menuData: Menu[] = [
       },
       {
         id: 64,
-        title: "Blog Grid Page",
-        path: "/blogs",
-        newTab: false,
-      },
-      {
-        id: 66,
-        title: "Sign Up Page",
-        path: "/signup",
-        newTab: false,
-      },
-      {
-        id: 67,
-        title: "Sign In Page",
-        path: "/signin",
-        newTab: false,
-      },
-      {
-        id: 68,
-        title: "Error Page",
-        path: "/error",
+        title: "Event Page",
+        path: "/events",
         newTab: false,
       },
     ],

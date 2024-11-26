@@ -1,24 +1,24 @@
-const SociableKitWidget: React.FC = () => {
-
+import SectionTitle from "../Common/SectionTitle";
+const SociableKitWidget = () => {
   return (
-    <>
-      <section
-        id="linkedinSec"
-        className="relative overflow-hidden"
-      >
-        <div className="container">
-          <div className="-mx-4 flex flex-wrap items-center">
-            <div className="w-full px-4">
-              <div
-                className="hero-content wow fadeInUp mx-auto max-w-[780px] text-center"
-                data-wow-delay=".2s"
-              ></div>
-              <iframe src='https://widgets.sociablekit.com/linkedin-page-posts/iframe/25488053' width='100%' height='1000'></iframe>
-            </div>
-          </div>
+    <section
+      id="team"
+      className="overflow-hidden bg-gray-1 pb-12 pt-20 dark:bg-dark-2 lg:pb-[90px] lg:pt-[120px]"
+    >
+      <div className="container">
+        <div className="mb-[60px]">
+          <SectionTitle
+            subtitle="Our Community"
+            title="Latest in Community"
+            paragraph="Stay updated with the latest insights and trends from our LinkedIn posts. Explore recent highlights and industry news!"
+            width="640px"
+            center
+          />
         </div>
-      </section>
-    </>)
+        <iframe src="https://widget.tagembed.com/2139413" style={{width:'100%', height:'455px',border:'none'}}></iframe>
+      </div>
+    </section>
+  );
 };
 
 export default SociableKitWidget;

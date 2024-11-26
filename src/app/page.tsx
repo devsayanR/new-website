@@ -11,8 +11,9 @@ import Pricing from "@/components/Pricing";
 import Team from "@/components/Team";
 import Testimonials from "@/components/Testimonials";
 import { getAllPosts } from "@/utils/markdown";
-import SociableKitWidget from "@/components/LinkdinPosts/index";
 import { Metadata } from "next";
+import LinkedInPosts from "@/components/LinkdinPosts";
+import LinkedIn from "next-auth/providers/linkedin";
 
 export const metadata: Metadata = {
   title: "Play Next.js - SaaS Starter Kit and Boilerplate for Next.js",
@@ -26,15 +27,13 @@ export default function Home() {
     <main>
       <ScrollUp />
       <Hero />
-      <Features />
-      <SociableKitWidget />
       <About />
+      <Features />
       <CallToAction />
-      <Pricing />
       <Testimonials />
       <Faq />
       <Team showAll={false} />
-      <HomeBlogSection posts={posts} />
+      <LinkedInPosts/>
       <Contact />
       <Clients />
     </main>

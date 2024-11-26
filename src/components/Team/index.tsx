@@ -32,7 +32,7 @@ const teamData: TeamType[] = [
   {
     id: 4,
     name: "Manjeet Singh",
-    designation: "Tech Lead",
+    designation: "Technical Lead",
     image: "/images/team/Manjeet_Singh.jpg",
     linkedinLink: "https://www.linkedin.com/in/manaregr8/",
     githubLink: "https://github.com/Manaregr8",
