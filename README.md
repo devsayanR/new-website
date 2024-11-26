@@ -87,4 +87,4 @@ This project is licensed under the [MIT License](./LICENSE).
 ---
 
 ## 📧 Contact
-For questions or support, contact us at [DevRhylmeFoundation@example.com]
+For questions or support, contact us at [contact@devrhylme.org]
