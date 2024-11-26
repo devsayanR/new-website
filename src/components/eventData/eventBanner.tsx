@@ -1,7 +1,7 @@
 import Breadcrumb from "../Common/Breadcrumb";
 import BannerEvent from "./bannerEvent";
-
-const HomeBlogSection = () => {
+import "./eventStyles.css";
+const eventBanner = () => {
   return (
     <section className="bg-white pb-10 dark:bg-dark lg:pb-20 lg:pt-1 md:mt-20">
       {/* <Breadcrumb pageName="Events" /> */}
@@ -23,4 +23,4 @@ const HomeBlogSection = () => {
   );
 };
 
-export default HomeBlogSection;
+export default eventBanner;

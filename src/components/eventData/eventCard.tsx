@@ -27,7 +27,7 @@ const Event: React.FC<EventProps> = ({
   daysLeft,
 }) => {
   return (
-    <div className="py-2 max-w-sm mx-auto bg-white dark:bg-dark-2 rounded-lg shadow-md border border-gray-700 dark:border-gray-300 group">
+    <div className="py-2 w-full mx-auto bg-white dark:bg-dark-2 rounded-lg shadow-md border border-gray-700 dark:border-gray-300 group">
       <div className="flex items-center justify-between pb-2 border-b border-gray-300 dark:border-gray-700">
         <div className="flex items-center space-x-2 ml-auto pr-3">
           <span className="text-xs font-semibold text-green-600 bg-green-100 dark:bg-green-800 dark:text-green-300 px-2 py-1 rounded">

@@ -3,7 +3,7 @@ import Contact from "@/components/Contact";
 import { Metadata } from "next";
 import EventBanner from "@/components/eventData/eventBanner";
 import Event from "@/components/eventData/eventCard";
-
+import  "@/components/eventData/eventStyles.css";
 const events = [
   {
     imageUrl: "/images/event/event1.jpeg",
@@ -53,14 +53,16 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
-      <Breadcrumb pageName="Event Page" />
+    {/*  <Breadcrumb pageName="Event Page" />*/}
       <div className="w-full">
+      <div className="" style={{maxWidth:'1520px', margin:'auto'}}>
         <EventBanner/>
-        <h2 className="px-20 pt-5 font-bold sm:text-xl">
+        <div className="eventCards">
+        <h2 className="pt-5 font-bold sm:text-xl">
             Explore Events
             <span className="font-normal pl-1 text-slate-500">({events.length})</span>
         </h2>
-        <div className="lg:px-20 py-6 sm:p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="py-6 gridCards">
           {events.map((event, index) => (
             <Event
               key={index}
@@ -74,6 +76,8 @@ const ContactPage = () => {
             />
           ))}
         </div>
+        </div>
+      </div>
       </div>
     </>
   );

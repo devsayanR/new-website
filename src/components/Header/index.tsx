@@ -47,8 +47,8 @@ const Header = () => {
     <>
       <header
         className={`ud-header left-0 top-0 z-40 flex w-full items-center ${sticky
-            ? "shadow-nav fixed z-[999] border-b border-stroke bg-white/80 backdrop-blur-[5px] dark:border-dark-3/20 dark:bg-dark/10"
-            : "absolute bg-transparent"
+          ? "shadow-nav fixed z-[999] border-b border-stroke bg-white/80 backdrop-blur-[5px] dark:border-dark-3/20 dark:bg-dark/10"
+          : "absolute bg-transparent"
           }`}
       >
         <div className="container">
@@ -80,8 +80,8 @@ const Header = () => {
                   <>
                     <Image
                       src={`${sticky
-                          ? "/images/logo/logo.svg"
-                          : "/images/logo/logo-white.svg"
+                        ? "/images/logo/logo.svg"
+                        : "/images/logo/logo-white.svg"
                         }`}
                       alt="logo"
                       width={140}
@@ -132,8 +132,8 @@ const Header = () => {
                 <nav
                   id="navbarCollapse"
                   className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark-2 lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 lg:dark:bg-transparent ${navbarOpen
-                      ? "visibility top-full opacity-100"
-                      : "invisible top-[120%] opacity-0"
+                    ? "visibility top-full opacity-100"
+                    : "invisible top-[120%] opacity-0"
                     }`}
                 >
                   <ul className="block lg:ml-8 lg:flex lg:gap-x-8 xl:ml-14 xl:gap-x-12">
@@ -155,8 +155,8 @@ const Header = () => {
                               scroll={false}
                               href={menuItem.path}
                               className={`ud-menu-scroll flex py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${sticky
-                                  ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
-                                  : "text-body-color dark:text-white lg:text-white"
+                                ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
+                                : "text-body-color dark:text-white lg:text-white"
                                 } ${pathUrl === menuItem?.path &&
                                 sticky &&
                                 "!text-primary"
@@ -195,8 +195,8 @@ const Header = () => {
                             <button
                               onClick={() => handleSubmenu(index)}
                               className={`ud-menu-scroll flex items-center justify-between py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${sticky
-                                  ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
-                                  : "text-white"
+                                ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
+                                : "text-white"
                                 }`}
                             >
                               {menuItem.title}
@@ -228,8 +228,8 @@ const Header = () => {
                                 href={submenuItem.path}
                                 key={i}
                                 className={`block rounded px-4 py-[10px] text-sm ${pathUrl === submenuItem.path
-                                    ? "text-primary"
-                                    : "text-body-color hover:text-primary dark:text-dark-6 dark:hover:text-primary"
+                                  ? "text-primary"
+                                  : "text-body-color hover:text-primary dark:text-dark-6 dark:hover:text-primary"
                                   }`}
                               >
                                 {submenuItem.title}
@@ -268,17 +268,14 @@ const Header = () => {
                     </svg>
                   </span>
                 </button>
-
                 <Link
                   href="https://github.com/DEVRhylme-Foundation" // Replace with your GitHub link
-                  className={`flex items-center gap-4 rounded-lg px-4 py-3 text-base font-medium text-white duration-300 ease-in-out ${sticky
-                      ? "bg-primary hover:bg-primary/90 dark:bg-white/10 dark:hover:bg-white/20"
-                      : "bg-white/10 hover:bg-white/20"
-                    }`} style={
-                      {
-                        marginLeft: '15px'
-                      }
-                    }
+                  className={`flex items-center gap-4 rounded-lg px-6 py-3 text-base font-medium duration-300 ease-in-out ${pathUrl !== "/" // Check if it's not the home page
+                      ? "bg-blue-500 text-white hover:bg-blue-600" // Blue base on other pages
+                      : sticky
+                        ? "bg-primary hover:bg-primary/90 text-white"
+                        : "bg-white/10 text-white hover:bg-white/20"
+                    }`} style={{marginLeft:'15px'}}
                 >
                   <svg
                     className="fill-current"
