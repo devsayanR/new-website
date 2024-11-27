@@ -3,7 +3,7 @@ import BannerEvent from "./bannerEvent";
 import "./eventStyles.css";
 const eventBanner = () => {
   return (
-    <section className="bg-white pt-4 pb-8 dark:bg-dark lg:pt-1">
+    <section className="bannerSize bg-white dark:bg-dark lg:pt-1">
       {/* <Breadcrumb pageName="Events" /> */}
 
       {/* Title Section */}

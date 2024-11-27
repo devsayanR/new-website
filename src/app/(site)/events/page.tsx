@@ -55,8 +55,9 @@ const ContactPage = () => {
     <>
      {/* <Breadcrumb pageName="Event Page" /> */}
       <div className="w-full">
-      <div className="" style={{maxWidth:'1520px', margin:'auto'}}>
+        <div className="gradientBorder">
         <EventBanner/>
+        </div>
         <div className="eventCards">
         <h2 className="pt-5 font-bold sm:text-xl">
             Explore Events
@@ -77,7 +78,6 @@ const ContactPage = () => {
           ))}
         </div>
         </div>
-      </div>
       </div>
     </>
   );

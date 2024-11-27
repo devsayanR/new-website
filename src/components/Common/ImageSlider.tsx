@@ -61,7 +61,7 @@ const ImageSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="relative w-full lg:h-80 max-w-3xl mx-auto mt-5 overflow-hidden rounded-lg shadow-lg">
+    <div className="relative w-full lg:h-80 max-w-3xl mx-auto overflow-hidden rounded-lg shadow-lg">
       {/* Slider */}
       <div
         id="slider"

@@ -31,7 +31,7 @@ const BannerEvent = () => {
       </div>
 
       {/* Right Section */}
-      <div className="right-div mt-8 md:mt-[5vh] h-auto w-full md:w-full relative overflow-hidden">
+      <div className="right-div md:mt-[5vh] h-auto w-full md:w-full relative overflow-hidden">
         <ImageSlider />
       </div>
     </div>
