@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <>
-    {/*  <Breadcrumb pageName="Event Page" />*/}
+     {/* <Breadcrumb pageName="Event Page" /> */}
       <div className="w-full">
       <div className="" style={{maxWidth:'1520px', margin:'auto'}}>
         <EventBanner/>
