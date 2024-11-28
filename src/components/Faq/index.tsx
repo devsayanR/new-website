@@ -8,7 +8,7 @@ const Faq = () => {
         <SectionTitle
           subtitle="FAQ"
           title="Any Questions? Answered"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          paragraph=""
           width="640px"
           center
         />
@@ -16,31 +16,44 @@ const Faq = () => {
         <div className="-mx-4 mt-[60px] flex flex-wrap lg:mt-20">
           <div className="w-full px-4 lg:w-1/2">
             <SingleFaq
-              question="How to use TailGrids?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="What is the mission of the DevRhylme Foundation?"
+              answer="The DevRhylme Foundation's mission is to empower aspiring developers through
+training and resources in Web3, OpenCV, and Generative AI, fostering a strong
+tech community."
             />
             <SingleFaq
-              question="How to download icons from LineIcons?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="What kind of events does the foundation organize?"
+              answer="The foundation hosts workshops, webinars, hackathons, and collaborative
+projects focused on emerging technologies like blockchain, computer vision, and
+AI."
             />
             <SingleFaq
-              question="Is GrayGrids part of UIdeck?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="Who can join the DevRhylme Foundation?"
+              answer="Anyone interested in learning about Web3, OpenCV, or Generative AI can
+join—whether you are a student, professional, open-source contributor, or an
+experienced developer.
+"
             />
           </div>
 
           <div className="w-full px-4 lg:w-1/2">
             <SingleFaq
-              question="Can I use this template for commercial project?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="Does the foundation offer mentorship opportunities?"
+              answer="Yes, DevRhylme Foundation provides mentorship from industry experts, helping
+members develop skills, work on projects, and navigate the tech landscape.
+"
             />
             <SingleFaq
-              question="Do you have plan to releasing Play Pro?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="How can I get involved with the foundation's projects?"
+              answer="You can get involved by attending events, participating in workshops, joining the
+foundation's online community, checking out their GitHub, or contributing to
+open-source projects they manage.
+"
             />
             <SingleFaq
-              question="Where and how to host this template?"
-              answer="It takes 2-3 weeks to get your first blog post ready. That includes the in-depth research & creation of your monthly content marketing strategy that we do before writing your first blog post, Ipsum available ."
+              question="Are there any fees to join or participate in the foundation's programs?"
+              answer="No, all resources, workshops, and events offered by the DevRhylme Foundation
+are free to ensure accessibility for everyone interested."
             />
           </div>
         </div>

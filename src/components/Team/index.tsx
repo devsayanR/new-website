@@ -84,7 +84,7 @@ const Team = ({ showAll }: { showAll: boolean }) => {
           <SectionTitle
             subtitle="Our Team"
             title="Meet Our Team"
-            paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+            paragraph="Meet our passionate team driving innovation and excellence."
             width="640px"
             center
           />

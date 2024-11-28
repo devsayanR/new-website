@@ -15,8 +15,8 @@ const menuData: Menu[] = [
   },
   {
     id: 3,
-    title: "Product",
-    path: "/product",
+    title: "Projects",
+    path: "/projects",
     newTab: false,
   },
   {
@@ -44,8 +44,8 @@ const menuData: Menu[] = [
       },
       {
         id: 62,
-        title: "Product Page",
-        path: "/product",
+        title: "Project Page",
+        path: "/projects",
         newTab: false,
       },
       {

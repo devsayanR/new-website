@@ -5,28 +5,28 @@ import SingleTestimonial from "./SingleTestimonial";
 const testimonialData: Testimonial[] = [
   {
     id: 1,
-    name: "Sabo Masties",
-    designation: "Founder @ Rolex",
+    name: "Manik",
+    designation: "Co-Organiser, SheBuilds",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/author-01.png",
-    star: 5,
-  },
-  {
-    id: 2,
-    name: "Margin Gesmu",
-    designation: "Founder @ UI Hunter",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+      "The event was a perfect platform for us to connect with like-minded individuals and showcase our expertise. The structure of the sessions, the audience engagement, and the seamless logistics made this collaboration worthwhile. Kudos to the organizing team for making it such a memorable experience!",
     image: "/images/testimonials/author-02.png",
     star: 5,
   },
   {
-    id: 3,
-    name: "William Smith",
-    designation: "Founder @ Trorex",
+    id: 2,
+    name: "Deepesh Sugnani",
+    designation: "Partnerships & Operations Manager,IBW’24",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+      "Collaborating on this event was an incredible experience. The organization, attention to detail, and professionalism displayed throughout the event were top-notch. Our team had the opportunity to engage with a highly enthusiastic audience, and the positive feedback we received was overwhelming. Looking forward to more successful partnerships in thefuture!",
+    image: "/images/testimonials/author-01.png",
+    star: 5,
+  },
+  {
+    id: 3,
+    name: "Rida",
+    designation: "Partnership & Growth Manager, IndiaBlockchainMonth",
+    content:
+      "Our collaboration was a great success, thanks to the event's professionalism and seamless coordination. It allowed us to reach a wider audience and share our vision effectively. The exposure and networking opportunities we gained from this partnership were truly valuable. Well done to the entire team!",
     image: "/images/testimonials/author-03.png",
     star: 5,
   },
@@ -39,7 +39,7 @@ const Testimonials = () => {
         <SectionTitle
           subtitle="Testimonials"
           title="What our Client Say"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          paragraph="Discover what our clients say about their journey with us!"
           width="640px"
           center
         />
