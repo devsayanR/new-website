@@ -5,8 +5,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "About Us | Play SaaS Starter Kit and Boilerplate for Next.js",
-  description: "This is About page description",
+    "About Us | DEVRhylme Foundation",
+  description: "Welcome to DevRhylme Foundation, an innovative AI startup at the forefront of Generative AI, OpenCV, and Web 3.0 technologies. We are committed to fostering a thriving developer community and organizing impactful events for diverse clients. Our mission is to build cutting-edge solutions while empowering organizations globally through collaborative innovation and knowledge-sharing.",
 };
 
 const AboutPage = () => {

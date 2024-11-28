@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 
-const Contact: React.FC = () => {
+// Accept the API access key as a prop
+interface ContactProps {
+  contactFormAccess: string;
+}
+
+const Contact: React.FC<ContactProps> = ({ contactFormAccess }) => {
   const [result, setResult] = useState<string>("");
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -13,9 +18,10 @@ const Contact: React.FC = () => {
     if (!form) return;
 
     setResult("Sending...");
-
     const formData = new FormData(form);
-    formData.append("access_key", "10d2b14d-3213-4137-b0be-95c052ad4a67");
+    
+    // Append the API access key dynamically
+    formData.append("access_key", contactFormAccess);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

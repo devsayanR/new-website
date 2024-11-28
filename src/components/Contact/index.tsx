@@ -1,6 +1,7 @@
 import Form from "./form";
 
 const Contact = () => {
+  const contactFormAccess = process.env.CONTACT_FORM_ACCESS;
   return (
     <section id="contact" className="relative py-20 md:py-[120px]">
       <div className="absolute left-0 top-0 -z-[1] h-full w-full dark:bg-dark"></div>
@@ -71,7 +72,7 @@ const Contact = () => {
               <h3 className="mb-8 text-2xl font-semibold text-dark dark:text-white md:text-[28px] md:leading-[1.42]">
                 Send us a Message
               </h3>
-              <Form/>
+              <Form contactFormAccess={contactFormAccess || ""}/>
             </div>
           </div>
         </div>

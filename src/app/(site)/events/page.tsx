@@ -46,8 +46,8 @@ const events = [
 
 export const metadata: Metadata = {
   title:
-    "Contact Page | Play SaaS Starter Kit and Boilerplate for Next.js",
-  description: "This is contact page description",
+    "Events | DEVRhylme Foundation",
+  description: "DevRhylme Foundation invites you to dive into the world of open source through impactful contributions and engaging events. Collaborate, innovate, and create at our hackathons, or host your own to empower the developer community.",
 };
 
 const ContactPage = () => {
