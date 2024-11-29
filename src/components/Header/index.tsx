@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import "@/components/Header/navbar.css";
 
 import menuData from "./menuData";
 
@@ -56,7 +57,7 @@ const Header = () => {
             <div className="w-60 max-w-full px-4">
               <Link
                 href="/"
-                className={`navbar-logo block w-full ${sticky ? "py-2" : "py-5"
+                className={`logo navbar-logo block w-full ${sticky ? "py-2" : "py-5"
                   } `}
               >
                 {pathUrl !== "/" ? (

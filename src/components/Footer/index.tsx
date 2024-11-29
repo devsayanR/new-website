@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer
+    <footer id="footer"
       className="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]"
       data-wow-delay=".15s"
     >
@@ -21,8 +21,7 @@ const Footer = () => {
                 />
               </Link>
               <p className="mb-8 max-w-[270px] text-base text-gray-7">
-                We create digital experiences for brands and companies by using
-                technology.
+              Our mission is to build cutting-edge solutions while empowering organizations globally through collaborative innovation and knowledge-sharing.
               </p>
               <div className="-mx-3 flex items-center">
                 {/* <a
@@ -143,15 +142,15 @@ const Footer = () => {
               <ul>
                 <li>
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    How it works
+                    Documentation
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Privacy policy
@@ -159,18 +158,10 @@ const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/#"
-                    className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
-                  >
-                    Refund policy
                   </a>
                 </li>
               </ul>
@@ -179,43 +170,39 @@ const Footer = () => {
           <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
             <div className="mb-10 w-full">
               <h4 className="mb-9 text-lg font-semibold text-white">
-                Our Products
+                Our Projects
               </h4>
               <ul>
                 <li>
                   <a
-                    href="https://lineicons.com/"
-                    target="_blank"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    LineIcons
+                    Project 1
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://nextjs.org/"
-                    target="_blank"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Next.js Templates
+                    Project 2
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://tailadmin.com/"
-                    target="_blank"
+                    href="/#footer"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    TailAdmin
+                    Project 3
                   </a>
                 </li>
                 <li>
                   <Link
-                    href="https://plainadmin.com/"
-                    target="_blank"
+                    href="/projects"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    PlainAdmin
+                    More Projects
                   </Link>
                 </li>
               </ul>
@@ -237,10 +224,10 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    href="/blogs"
+                    href="/#news"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Blogs
+                    News
                   </Link>
                 </li>
                 <li>
@@ -264,19 +251,19 @@ const Footer = () => {
               <div className="my-1">
                 <div className="-mx-3 flex items-center justify-center md:justify-start">
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="px-3 text-base text-gray-7 hover:text-white hover:underline"
                   >
                     Privacy policy
                   </a>
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="px-3 text-base text-gray-7 hover:text-white hover:underline"
                   >
                     Legal notice
                   </a>
                   <a
-                    href="/#"
+                    href="/#footer"
                     className="px-3 text-base text-gray-7 hover:text-white hover:underline"
                   >
                     Terms of service
@@ -289,12 +276,12 @@ const Footer = () => {
                 <p className="text-base text-gray-7">
                   Designed and Developed by{" "}
                   <a
-                    href="https://tailgrids.com"
+                    href="https://github.com/DEVRhylme-Foundation"
                     rel="nofollow noopner noreferrer"
                     target="_blank"
                     className="text-gray-1 hover:underline"
                   >
-                    TailGrids and Next.js Templates
+                    DEVRhylme Technical Team
                   </a>
                 </p>
               </div>

@@ -2,7 +2,7 @@ import SectionTitle from "../Common/SectionTitle";
 const SociableKitWidget = () => {
   return (
     <section
-      id="team"
+      id="news"
       className="overflow-hidden bg-gray-1 pb-12 pt-20 dark:bg-dark-2 lg:pb-[90px] lg:pt-[120px]"
     >
       <div className="container">
