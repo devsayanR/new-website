@@ -5,7 +5,7 @@ import featuresData from "./featuresData";
 
 const Features = () => {
   return (
-    <section className="w-full pb-8 pt-20 dark:bg-dark lg:pb-[70px] lg:pt-[120px] overflow-hidden">
+    <section id="features" className="w-full pb-8 pt-20 dark:bg-dark lg:pb-[70px] lg:pt-[120px] overflow-hidden">
       <div className="container">
         <SectionTitle
           subtitle="Features"
@@ -14,7 +14,7 @@ const Features = () => {
         />
 
         <div className="-mx-10 flex flex-wrap lg:mt-20">
-          <InfiniteCarousel/>
+          <InfiniteCarousel />
         </div>
       </div>
     </section>
