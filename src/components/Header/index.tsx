@@ -172,8 +172,8 @@ const Header = () => {
                           <button
                             aria-label="theme toggler"
                             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                            className="flex pl-10 h-8 w-8 items-center justify-center text-dark duration-300 dark:text-white md:hidden"
-                          > Theme 
+                            className="flex pl-10 h-8 w-8 items-center justify-center text-body-color duration-300 dark:text-white md:hidden"
+                          > Theme
                             <span>
                               <svg
                                 viewBox="0 0 16 16"
@@ -220,7 +220,7 @@ const Header = () => {
                               onClick={() => handleSubmenu(index)}
                               className={`ud-menu-scroll flex items-center justify-between py-2 text-base lg:inline-flex lg:px-0 lg:py-6 ${sticky
                                 ? "text-dark group-hover:text-primary dark:text-white dark:group-hover:text-primary"
-                                : "text-white"
+                                : "md:text-white text-body-color dark:text-white"
                                 }`}
                             >
                               {menuItem.title}

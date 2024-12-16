@@ -1,7 +1,24 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
 
 const Hero = () => {
+
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
   return (
     <>
       <section
@@ -57,14 +74,27 @@ const Hero = () => {
                 className="wow fadeInUp relative z-10 mx-auto max-w-[845px]"
                 data-wow-delay=".25s"
               >
-                <div className="mt-16">
-                  <Image
+                <div className="mt-16 mx-auto max-w-full rounded-t-xl rounded-tr-xl rounded-lg overflow-hidden shadow-lg transition-transform duration-300"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  {/* <Image
                     src="/images/hero/hero-image.jpg"
                     alt="hero"
                     className="mx-auto max-w-full rounded-t-xl rounded-tr-xl"
                     width={845}
                     height={316}
+                  /> */}
+                  <video
+                    ref={videoRef}
+                    className="w-full h-full object-cover"
+                    src="/images/hero/hero-video.mp4"
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
                   />
+
                 </div>
                 <div className="absolute -left-9 bottom-0 z-[-1]">
                   <svg
