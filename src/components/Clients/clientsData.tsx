@@ -31,8 +31,8 @@ export const clientsData: Client[] = [
   {
     id: 5,
     title: "India Blockchain Month",
-    logo: "/images/brands/iblockchainM.png",
-    logoWhite: "/images/brands/iblockchainM.png", 
+    logo: "/images/brands/g23.png",
+    logoWhite: "/images/brands/g24.png", 
     link: "https://www.indiablockchainmonth.com/",
   },
 ];
