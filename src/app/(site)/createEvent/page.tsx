@@ -4,8 +4,21 @@ import React, { useState } from "react";
 import { ref, push } from "firebase/database"; // Import Realtime Database functions
 import { rtdb } from "../../../firebase/firebaseConfig"; // Import Realtime Database reference
 
+interface EventData {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  tracks: string;
+  details: string;
+  coverImage: string;
+  tags: string[];
+  imageFile: File | null;
+  eventDuration: string;
+}
+
 const CreateEventPage: React.FC = () => {
-  const [eventData, setEventData] = useState({
+  const [eventData, setEventData] = useState<EventData>({
     title: "",
     date: "",
     time: "",
@@ -14,8 +27,8 @@ const CreateEventPage: React.FC = () => {
     details: "",
     coverImage: "",
     tags: [],
-    imageFile: null, // To store the selected image file
-    eventDuration: "", // New field for event duration
+    imageFile: null,
+    eventDuration: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,14 +47,14 @@ const CreateEventPage: React.FC = () => {
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+    const file = e.target.files?.[0]; // Using optional chaining
+    if (file) {
       setEventData((prevData) => ({
         ...prevData,
-        imageFile: e.target.files[0], // Save the selected image file
+        imageFile: file, // Save the selected image file
       }));
     }
   };
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
