@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 import { rtdb } from "../../../firebase/firebaseConfig"; // Ensure you're importing the correct Firebase config
@@ -7,7 +8,9 @@ import Event from "@/components/eventData/eventCard";
 import "@/components/eventData/eventStyles.css";
 import { useRouter } from "next/navigation"; // Import useRouter for navigation
 
+// Define the EventData interface with all fields required (no optional fields)
 interface EventData {
+  id: string;
   title: string;
   date: string;
   time: string;
@@ -15,7 +18,10 @@ interface EventData {
   tracks: string;
   details: string;
   coverImage: string;
+  tags: string[];
   duration: number; // Duration in hours
+  eventStatus: string; // Event status can be "upcoming", "ongoing", or "expired"
+  daysLeft: number; // Number of days left for the event to happen
 }
 
 const ContactPage = () => {
@@ -31,10 +37,11 @@ const ContactPage = () => {
       if (data) {
         // Parse the data into an array of events
         const parsedEvents = Object.entries(data).map(([id, value]) => {
-          // Ensure value is an object before spreading it
           if (typeof value === "object" && value !== null) {
-            // Get current date and event date
-            const eventDate = new Date(`${value.date}T${value.time}`);
+            // Type assertion to EventData to ensure we access the properties correctly
+            const eventData = value as EventData;
+
+            const eventDate = new Date(`${eventData.date}T${eventData.time}`);
             const currentDate = new Date();
 
             // Calculate days left
@@ -42,23 +49,26 @@ const ContactPage = () => {
             const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Days difference
 
             // Calculate event status
-            let eventStatus = "upcoming"; // Default status
-            const eventEndTime = eventDate.getTime() + value.duration * 60 * 60 * 1000; // Add duration to event start time
+            let eventStatus: string = "upcoming"; // Default status
+            const eventEndTime = eventDate.getTime() + eventData.duration * 60 * 60 * 1000; // Add duration to event start time
             if (currentDate.getTime() >= eventEndTime) {
               eventStatus = "expired"; // If event has passed
             } else if (currentDate.getTime() >= eventDate.getTime()) {
               eventStatus = "ongoing"; // If event is currently happening
             }
 
+            // Return event object after adding event status and days left
+            // Exclude 'id' from spreading the `eventData`, and manually assign it
             return {
-              id,
-              ...value, // Spread value only if it's an object
+              ...eventData, // Spread the other properties without id
+              id, // Add `id` manually
               eventStatus,
               daysLeft,
             };
           }
-          return { id }; // Return only id if value is not an object
-        });
+          return null; // Return null if value is not in expected format
+        }).filter((event): event is EventData => event !== null); // Filter out any null events
+
         setEvents(parsedEvents);
       } else {
         setEvents([]); // Handle case where no events exist
@@ -100,14 +110,6 @@ const ContactPage = () => {
                   tags={event.tags || []} // Use an empty array if tags are not provided
                   eventStatus={event.eventStatus}
                   daysLeft={event.daysLeft}
-                  // Add a new prop for status
-                  buttonClass={
-                    event.eventStatus === "ongoing"
-                      ? "bg-lightgreen"
-                      : event.eventStatus === "upcoming"
-                      ? "bg-orange-500"
-                      : "bg-gray-500"
-                  }
                 />
               </div>
             ))}
