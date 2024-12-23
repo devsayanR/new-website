@@ -1,82 +1,117 @@
-import Breadcrumb from "@/components/Common/Breadcrumb";
-import Contact from "@/components/Contact";
-import { Metadata } from "next";
+"use client";
+import React, { useEffect, useState } from "react";
+import { ref, onValue } from "firebase/database";
+import { rtdb } from "../../../firebase/firebaseConfig"; // Ensure you're importing the correct Firebase config
 import EventBanner from "@/components/eventData/eventBanner";
 import Event from "@/components/eventData/eventCard";
-import  "@/components/eventData/eventStyles.css";
-const events = [
-  {
-    imageUrl: "/images/event/event1.jpeg",
-    title: "BNB Hack 2024 Q4: The Ultimate Battle of Hacker Heroes",
-    date: "Nov 30, 2024",
-    location: "Virtual",
-    tags: ["blockchain", "AI", "TG", "Hack", "DeFi"],
-    eventStatus: "Ongoing",
-    daysLeft: 30,
-  },
-  {
-    imageUrl: "/images/event/event1.jpeg",
-    title: "BNB Hack 2024 Q4: The Ultimate Battle of Hacker Heroes",
-    date: "Nov 30, 2024",
-    location: "Virtual",
-    tags: ["blockchain", "AI", "TG", "Hack", "DeFi"],
-    eventStatus: "Ongoing",
-    daysLeft: 30,
-  },
-  {
-    imageUrl: "/images/event/event1.jpeg",
-    title: "BNB Hack 2024 Q4: The Ultimate Battle of Hacker Heroes",
-    date: "Nov 30, 2024",
-    location: "Virtual",
-    tags: ["blockchain", "AI", "TG", "Hack", "DeFi"],
-    eventStatus: "Ongoing",
-    daysLeft: 30,
-  },
-  {
-    imageUrl: "/images/event/event1.jpeg",
-    title: "BNB Hack 2024 Q4: The Ultimate Battle of Hacker Heroes",
-    date: "Nov 30, 2024",
-    location: "Virtual",
-    tags: ["blockchain", "AI", "TG", "Hack", "DeFi"],
-    eventStatus: "Ongoing",
-    daysLeft: 30,
-  },
-];
+import "@/components/eventData/eventStyles.css";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
 
-
-export const metadata: Metadata = {
-  title:
-    "Events | DEVRhylme Foundation",
-  description: "DevRhylme Foundation invites you to dive into the world of open source through impactful contributions and engaging events. Collaborate, innovate, and create at our hackathons, or host your own to empower the developer community.",
-};
+interface EventData {
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  tracks: string;
+  details: string;
+  coverImage: string;
+  duration: number; // Duration in hours
+}
 
 const ContactPage = () => {
+  const [events, setEvents] = useState<EventData[]>([]); // Using EventData interface for type safety
+  const [loading, setLoading] = useState<boolean>(true);
+  const router = useRouter(); // Initialize router for navigation
+
+  useEffect(() => {
+    const eventsRef = ref(rtdb, "events");
+
+    const unsubscribe = onValue(eventsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        // Parse the data into an array of events
+        const parsedEvents = Object.entries(data).map(([id, value]) => {
+          // Ensure value is an object before spreading it
+          if (typeof value === "object" && value !== null) {
+            // Get current date and event date
+            const eventDate = new Date(`${value.date}T${value.time}`);
+            const currentDate = new Date();
+
+            // Calculate days left
+            const timeDiff = eventDate.getTime() - currentDate.getTime();
+            const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Days difference
+
+            // Calculate event status
+            let eventStatus = "upcoming"; // Default status
+            const eventEndTime = eventDate.getTime() + value.duration * 60 * 60 * 1000; // Add duration to event start time
+            if (currentDate.getTime() >= eventEndTime) {
+              eventStatus = "expired"; // If event has passed
+            } else if (currentDate.getTime() >= eventDate.getTime()) {
+              eventStatus = "ongoing"; // If event is currently happening
+            }
+
+            return {
+              id,
+              ...value, // Spread value only if it's an object
+              eventStatus,
+              daysLeft,
+            };
+          }
+          return { id }; // Return only id if value is not an object
+        });
+        setEvents(parsedEvents);
+      } else {
+        setEvents([]); // Handle case where no events exist
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe(); // Clean up the listener when the component unmounts
+  }, []);
+
+  const handleEventClick = (eventId: string) => {
+    router.push(`/events/${eventId}`); // Navigate to the event detail page
+  };
+
+  if (loading) {
+    return <p>Loading events...</p>; // Show a loading indicator while fetching the data
+  }
+
   return (
     <>
-     {/* <Breadcrumb pageName="Event Page" /> */}
       <div className="w-full">
         <div className="gradientBorder">
-        <EventBanner/>
+          <EventBanner />
         </div>
         <div className="eventCards">
-        <h2 className="pt-5 font-bold sm:text-xl">
+          <h2 className="pt-5 font-bold sm:text-xl">
             Explore Events
             <span className="font-normal pl-1 text-slate-500">({events.length})</span>
-        </h2>
-        <div className="py-6 gridCards">
-          {events.map((event, index) => (
-            <Event
-              key={index}
-              imageUrl={event.imageUrl}
-              title={event.title}
-              date={event.date}
-              location={event.location}
-              tags={event.tags}
-              eventStatus={event.eventStatus}
-              daysLeft={event.daysLeft}
-            />
-          ))}
-        </div>
+          </h2>
+          <div className="py-6 gridCards">
+            {events.map((event) => (
+              <div key={event.id} onClick={() => handleEventClick(event.id)} className="cursor-pointer">
+                <Event
+                  key={event.id} // Use event.id to uniquely identify each event
+                  imageUrl={event.coverImage || "/images/event/event1.jpeg"} // Handle coverImage if missing
+                  title={event.title}
+                  date={event.date}
+                  location={event.location}
+                  tags={event.tags || []} // Use an empty array if tags are not provided
+                  eventStatus={event.eventStatus}
+                  daysLeft={event.daysLeft}
+                  // Add a new prop for status
+                  buttonClass={
+                    event.eventStatus === "ongoing"
+                      ? "bg-lightgreen"
+                      : event.eventStatus === "upcoming"
+                      ? "bg-orange-500"
+                      : "bg-gray-500"
+                  }
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

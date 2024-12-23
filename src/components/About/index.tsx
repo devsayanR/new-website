@@ -15,7 +15,7 @@ const About = () => {
                   DevRhylme Foundation
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
-                Welcome to DevRhylme Foundation, an innovative AI startup at the forefront of Generative AI, OpenCV, and Web 3.0 technologies. We are committed to fostering a thriving developer community and organizing impactful events for diverse clients. Our mission is to build cutting-edge solutions while empowering organizations globally through collaborative innovation and knowledge-sharing.
+                Welcome to DevRhylme Foundation, an innovative AI startup at the forefront of Generative AI, OpenCV, and Web 3.0 technologies. We are committed to fostering a thriving developer community and organizing impactful events for diverse clients. Building cutting-edge solutions through collaborative innovation and knowledge-sharing.
                   <br /> <br />
                   Our mission is to empower developers and organizations with the technology to innovate and excel in AI, computer vision, and generative AI.
                 </p>

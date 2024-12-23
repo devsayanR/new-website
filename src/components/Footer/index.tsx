@@ -175,26 +175,26 @@ const Footer = () => {
               <ul>
                 <li>
                   <a
-                    href="/#footer"
+                    href="https://github.com/DEVRhylme-Foundation/DragGAN"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Project 1
+                    Drag-GAN
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/#footer"
+                    href="https://github.com/DEVRhylme-Foundation/ForgeX"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Project 2
+                    ForgeX
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/#footer"
+                    href="https://github.com/DEVRhylme-Foundation/new-website"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Project 3
+                    Website 
                   </a>
                 </li>
                 <li>

@@ -7,19 +7,19 @@ import Link from "next/link";
 const teamData: TeamType[] = [
   {
     id: 1,
-    name: "Rishi Mondal",
-    designation: "Founder and CTO",
-    image: "/images/team/Rishi_Mondal.jpg",
-    linkedinLink: "https://www.linkedin.com/in/rishi-mondal-5238b2282/",
-    githubLink: "https://github.com/MAVRICK-1",
-  },
-  {
-    id: 2,
     name: "Durgesh Prajapati",
     designation: "Founder & CEO",
     image: "/images/team/Durgesh_Prajapati.jpg",
     linkedinLink: "https://www.linkedin.com/in/durgesh4993/",
     githubLink: "https://github.com/Durgesh4993",
+  },
+  {
+    id: 2,
+    name: "Rishi Mondal",
+    designation: "Founder and CTO",
+    image: "/images/team/Rishi_Mondal.jpg",
+    linkedinLink: "https://www.linkedin.com/in/rishi-mondal-5238b2282/",
+    githubLink: "https://github.com/MAVRICK-1",
   },
   {
     id: 3,

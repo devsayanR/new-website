@@ -1,9 +1,18 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation"; // Import useRouter from Next.js
 import ImageSlider from "../Common/ImageSlider"; // Adjust the import path based on your project structure
 
 const BannerEvent = () => {
+  const router = useRouter(); // Initialize the router
+
+  const handleCreateEventClick = () => {
+    router.push("/createEvent"); // Navigate to the /createEvent page
+  };
+
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mb-4 h-auto w-full p-6 sm:px-8  pt-28">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 mb-4 h-auto w-full p-6 sm:px-8 pt-28">
       {/* Left Section */}
       <div className="left-div mt-3 lg:mt-[10vh] h-auto w-full text-center lg:text-left">
         <h1 className="text-2xl md:text-5xl font-medium">
@@ -18,6 +27,7 @@ const BannerEvent = () => {
           <button
             className="h-12 w-full md:w-60 bg-blue-500 text-white rounded-md mb-4 md:mb-0"
             type="button"
+            onClick={handleCreateEventClick} // Navigate to /createEvent
           >
             Create an Event
           </button>
