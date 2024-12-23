@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase } from "firebase/database"; // Import Realtime Database
-import { getAnalytics } from "firebase/analytics";
+import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Your Firebase configuration
 const firebaseConfig = {
@@ -19,7 +19,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Export services to use throughout your app
+// Initialize Firestore and Realtime Database
 export const db = getFirestore(app); // Firestore
 export const rtdb = getDatabase(app); // Realtime Database
-export const analytics = getAnalytics(app);
+
+// Initialize Firebase Analytics only on the client side
+let analytics;
+if (typeof window !== "undefined" && isSupported()) {
+  analytics = getAnalytics(app);
+}
+
+export { analytics };
