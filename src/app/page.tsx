@@ -33,7 +33,7 @@ export default function Home() {
       <Testimonials />
       <Faq />
       <Team showAll={false} />
-      <LinkedInPosts />
+    {/*  <LinkedInPosts /> */}
       <Contact />
       <Clients />
     </main>
