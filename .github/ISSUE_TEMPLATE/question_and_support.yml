@@ -22,14 +22,14 @@ body:
       label: Select program in which you are contributing
       multiple: true
       options:
-        - GSoC'25 Practice
+        - GSoC'25 
         - SWoC'25
         - Other
   - type: checkboxes
     id: terms
     attributes:
       label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [CODE OF CONDUCT](https://github.com/GameSphere-MultiPlayer/Community-Page/blob/main/.github/CODE_OF_CONDUCT.md)
+      description: By submitting this issue, you agree to follow our [CODE OF CONDUCT]()
       options:
         - label: I follow [CONTRIBUTING GUIDELINE]() of this project.
           required: true
