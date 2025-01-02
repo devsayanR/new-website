@@ -1,35 +1,26 @@
-name: 🪲 Bug Report 
-description: Report your bug by filling the information given below
-title: "[Bug]: "
+name: 📚 Documentation or README.md issue report
+description: Report an issue in the project's documentation or README.md file.
+title: "[Documentation Bug]: "
 
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        Thanks for taking the time to fill out this documentation bug report!
   - type: textarea
-    id: bug-description
+    id: documentation-bug-description
     attributes:
-      label: Give a brief about the bug ✍️
-      description: Enter a brief description about the bug report
+      label: Describe the bug ✍️
+      description: Enter a brief description about the documentation bug report
       placeholder: Please include a summary, also include relevant motivation and context. 
-      value: "Description"
-    validations:
-      required: true
-  - type: textarea
-    id: behaviors
-    attributes:
-      label: What is the expected behavior? 🤔
-      description: Enter the expected behavior of the bug
-      placeholder: Please include a summary, also include relevant motivation and context. 
-      value: "Description"
+      value: "Describe your bug here"
     validations:
       required: true
   - type: textarea
     id: instructions
     attributes:
-      label: Provide step by step information to reproduce the bug 📄
-      description: Enter the description of how you plan to find the bug's solution
+      label: Provide step by step information reproduce the bug 📄
+      description: Enter the description on how you plan to find the bug's solution
       placeholder: Please include a summary, also include relevant motivation and context. 
       value: "Description"
     validations:
@@ -50,4 +41,3 @@ body:
       options:
         - label: I follow [CONTRIBUTING GUIDELINE]() of this project.
           required: true
-
