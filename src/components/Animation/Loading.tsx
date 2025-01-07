@@ -124,7 +124,7 @@ const Loading: React.FC = () => {
   return (
     <div>
       {/* Preloader Section */}
-      <div className="preloader fixed top-0 left-0 w-full h-screen bg-gray-800 flex justify-center items-center flex-col z-50">
+      <div className="preloader fixed top-0 left-0 w-full h-screen bg-gray-800 flex justify-center items-center flex-col z-[1000]">
         <div className="progress-container w-72 h-0.5 bg-white bg-opacity-10 mb-5 relative z-2">
           <div className="progress-bar absolute top-0 left-0 h-full w-0 bg-white"></div>
         </div>

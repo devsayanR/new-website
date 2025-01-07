@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Cursor from "../Animation/Cursor";
+//import Cursor from "../Animation/Cursor";
 
 const About = () => {
   return (
