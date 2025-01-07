@@ -14,6 +14,7 @@ import { getAllPosts } from "@/utils/markdown";
 import { Metadata } from "next";
 import LinkedInPosts from "@/components/LinkdinPosts";
 import LinkedIn from "next-auth/providers/linkedin";
+import Loading from "@/components/Animation/Loading";
 
 export const metadata: Metadata = {
   title: "Home | DEVRhylme Foundation",
@@ -25,6 +26,7 @@ export default function Home() {
 
   return (
     <main>
+      <Loading/>
       <ScrollUp />
       <Hero />
       <About />
