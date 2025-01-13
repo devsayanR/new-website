@@ -35,4 +35,11 @@ export const clientsData: Client[] = [
     logoWhite: "/images/brands/g24.png", 
     link: "https://www.indiablockchainmonth.com/",
   },
+  {
+    id: 6,
+    title: "CoinDesk",
+    logo: "/images/brands/coindesk-logo.avif",
+    logoWhite: "/images/brands/CoinDesk_Dark.png", 
+    link: "https://www.coindesk.com/",
+  },
 ];

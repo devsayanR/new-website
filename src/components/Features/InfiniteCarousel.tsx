@@ -16,11 +16,13 @@ const InfiniteCarousel: React.FC = () => {
           .fill([
             
             "https://imgix.datadoghq.com/img/dd_logo_n_70x75.png?ch=Width,DPR&fit=max&auto=format&w=70&h=75&dpr=2",
+            "https://img.icons8.com/?size=100&id=wU62u24brJ44&format=png&color=000000",
             "https://img.icons8.com/?size=100&id=24662&format=png&color=228BE6",
             "https://img.icons8.com/?size=96&id=fpGM2cINbbu4&format=png",
             "https://img.icons8.com/?size=100&id=12599&format=png&color=228BE6",
             "https://img.icons8.com/?size=160&id=RduYmqw5H7xm&format=png",
             "https://img.icons8.com/?size=100&id=uVERmCBZZACL&format=png&color=228BE6",
+            "https://img.icons8.com/?size=100&id=fUGx53gD9Jof&format=png&color=000000"
           ])
           .flat()
           .map((src, index) => (

@@ -1,20 +1,29 @@
+import Spline from '@splinetool/react-spline/next';
 import Link from "next/link";
-
+import "./hero.css";
 const Hero = () => {
 
   return (
     <>
       <section
         id="home"
-        className="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]"
+        className="relative overflow-hidden bg-primary pt-[150px] md:pt-[150px] lg:pt-[160px]"
       >
+        <div className='robotiii absolute h-56 w-full justify-center items-center top-[450px] sm:top-[600px] md:top-[470px]'>
+        <center><div  className='relative h-48 sm:w-2/5 md:w-2/5 justify-center z-4'>
+            <Spline scene="https://prod.spline.design/TL0zTaVqtOsy4Ihx/scene.splinecode" />
+          </div></center>
+        </div>
         <div className="container">
+        
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4">
               <div
                 className="hero-content wow fadeInUp mx-auto max-w-[780px] text-center"
                 data-wow-delay=".2s"
+                
               >
+                
                 <h1 className="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]">
                   DevRhylme Foundation: Innovating AI and Open Source Solutions
                 </h1>
@@ -26,7 +35,7 @@ const Hero = () => {
                     <Link
                       href="https://github.com/DEVRhylme-Foundation"
                       target="_blank"
-                      className="flex items-center gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
+                      className="flex items-center z-1 gap-4 rounded-md bg-white/[0.12] px-6 py-[14px] -mt-2 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
                     >
                       <svg
                         className="fill-current"
@@ -57,7 +66,7 @@ const Hero = () => {
                 className="wow fadeInUp relative z-10 mx-auto max-w-[845px]"
                 data-wow-delay=".25s"
               >
-                <div className="mt-16 mx-auto max-w-full rounded-t-xl rounded-lg rounded-b-none overflow-hidden shadow-lg transition-transform duration-300" >
+                <div className="mt-20 mx-auto max-w-full rounded-t-xl rounded-lg rounded-b-none overflow-hidden shadow-lg transition-transform duration-300" >
                   <video
                     className="w-full h-full object-cover"
                     src="/images/hero/hero-video.mp4"
