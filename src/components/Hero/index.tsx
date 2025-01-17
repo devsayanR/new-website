@@ -11,7 +11,9 @@ const Hero = () => {
       >
         <div className='robotiii absolute h-56 w-full justify-center items-center top-[450px] sm:top-[600px] md:top-[470px]'>
         <center><div  className='relative h-48 sm:w-2/5 md:w-2/5 justify-center z-4'>
-            <Spline scene="https://prod.spline.design/TL0zTaVqtOsy4Ihx/scene.splinecode" />
+        <Spline
+        scene="https://prod.spline.design/xftrkvFRb1DBOaCk/scene.splinecode" 
+      />
           </div></center>
         </div>
         <div className="container">
@@ -69,7 +71,7 @@ const Hero = () => {
                 <div className="mt-20 mx-auto max-w-full rounded-t-xl rounded-lg rounded-b-none overflow-hidden shadow-lg transition-transform duration-300" >
                   <video
                     className="w-full h-full object-cover"
-                    src="/images/hero/hero-video.mp4"
+                    src="/images/hero/hero_video_new.mp4"
                     muted
                     autoPlay
                     loop
