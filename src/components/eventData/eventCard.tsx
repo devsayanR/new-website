@@ -5,6 +5,7 @@ import Image from "next/image";
 import { GoTag } from "react-icons/go";
 import { CiLocationOn } from "react-icons/ci";
 import { FaCalendarAlt } from "react-icons/fa";
+import { Tooltip } from "react-tooltip";
 
 interface EventProps {
   imageUrl: string;
@@ -38,39 +39,58 @@ const Event: React.FC<EventProps> = ({
         </div>
       </div>
 
-      <div className="p-3 relative w-full h-48 sm:h-40 md:h-52 lg:h-48 overflow-hidden group">
+     {/* Image */}
+     <div className="relative w-full h-52 overflow-hidden">
         <Image
           src={imageUrl}
           alt={title}
           layout="fill"
           objectFit="cover"
-          className="transition-transform duration-500 ease-out group-hover:scale-110"
+          className="transition-transform duration-500 ease-out group-hover:scale-105"
           priority
         />
       </div>
 
-      <div className="px-4 py-2">
-        <h2 className="text-lg font-bold text-gray-800 dark:text-white">{title}</h2>
-        <div className="flex items-center justify-between">
-          <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mt-1">
-            <CiLocationOn className="text-lg text-black dark:text-white font-bold" />
-            {location}
-          </p>
-          <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mt-1">
+      {/* Content */}
+      <div className="p-4 flex flex-col flex-grow">
+        {/* Title */}
+        <h2 className="text-lg font-bold text-gray-800 dark:text-white ">
+          {title}
+        </h2>
+
+        {/* Location and Date */}
+        <div className="flex justify-between items-center mt-2">
+          {/* Location with Styled Tooltip */}
+            <div className="relative flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <CiLocationOn className="text-lg text-black dark:text-white" data-tooltip-id="location-tooltip" data-tooltip-content={location} />
+            <span className="truncate w-36" data-tooltip-id="location-tooltip" data-tooltip-content={location}>
+              {location}
+            </span>
+            <Tooltip id="location-tooltip" place="top" />
+            </div>
+
+          {/* Date */}
+          <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
             <FaCalendarAlt />
             {date}
           </p>
         </div>
-        <div className="flex items-center flex-wrap gap-2 mt-4">
-          <GoTag className="font-bold" />
-          {tags.map((tag, index) => (
-            <span
-              key={index}
-              className="text-xs font-medium bg-blue-200 text-blue-500 px-2 py-1 rounded"
-            >
-              {tag}
-            </span>
-          ))}
+
+        {/* Tags */}
+        <div className="flex items-center flex-wrap gap-2 mt-auto py-5">
+          <GoTag className="text-blue-500" />
+          {tags.length > 0 ? (
+            tags.map((tag, index) => (
+              <span
+                key={index}
+                className="text-xs font-medium bg-blue-100 text-blue-600 px-2 py-1 rounded "
+              >
+                {tag}
+              </span>
+            ))
+          ) : (
+            <span className="text-xs text-gray-400 italic">No tags</span>
+          )}
         </div>
       </div>
     </div>
