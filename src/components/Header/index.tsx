@@ -47,8 +47,8 @@ const Header = () => {
   return (
     <>
       <header
-        className={`ud-header left-0 top-0 z-40 flex w-full items-center ${sticky
-          ? "shadow-nav fixed z-[999] border-b border-none bg-white/30 backdrop-blur-md dark:border-dark-3/20 dark:bg-dark/10 h-[100px]"
+        className={`ud-header left-0 top-0 z-40 flex w-full items-center h-[80px] ${sticky
+          ? "shadow-nav fixed z-[999] border-b border-none bg-white/30 backdrop-blur-md dark:border-dark-3/20 dark:bg-dark/10 h-[80px]"
           : "absolute bg-transparent"
           }`}
       >

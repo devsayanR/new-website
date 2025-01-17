@@ -39,7 +39,7 @@ export const clientsData: Client[] = [
     id: 6,
     title: "CoinDesk",
     logo: "/images/brands/coindesk-logo.avif",
-    logoWhite: "/images/brands/CoinDesk_Dark.png", 
+    logoWhite: "/images/brands/CoinDesk_dark.png", 
     link: "https://www.coindesk.com/",
   },
 ];
