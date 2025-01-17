@@ -251,12 +251,20 @@ const Header = () => {
                               <Link
                                 href={submenuItem.path}
                                 key={i}
-                                className={`block rounded px-4 py-[10px] text-sm ${pathUrl === submenuItem.path
+                                className={`block rounded px-2 py-[10px] text-sm ${pathUrl === submenuItem.path
                                   ? "text-primary"
                                   : "text-body-color hover:text-primary dark:text-dark-6 dark:hover:text-primary"
                                   }`}
                               >
-                                {submenuItem.title}
+                                <span className="flex items-center gap-2 font-bold">
+                                  <Image
+                                    src={submenuItem.icon}
+                                    alt={submenuItem.title}
+                                    width={20}
+                                    height={20}
+                                  />
+                                  {submenuItem.title}
+                                </span>
                               </Link>
                             ))}
                           </div>
