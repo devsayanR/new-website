@@ -6,7 +6,6 @@ import { GoTag } from "react-icons/go";
 import { CiLocationOn } from "react-icons/ci";
 import { FaCalendarAlt } from "react-icons/fa";
 
-
 interface EventProps {
   imageUrl: string;
   title: string;
@@ -31,11 +30,11 @@ const Event: React.FC<EventProps> = ({
       <div className="flex items-center justify-between pb-2 border-b border-gray-300 dark:border-gray-700">
         <div className="flex items-center space-x-2 ml-auto pr-3">
           <span className="text-xs font-semibold text-green-600 bg-green-100 dark:bg-green-800 dark:text-green-300 px-2 py-1 rounded">
-            {eventStatus}
+            {daysLeft < 0 ? "Complete" : eventStatus}
           </span>
-          <span className="text-xs text-orange-500">
-            {daysLeft} days left
-          </span>
+          {daysLeft >= 0 && (
+            <span className="text-xs text-orange-500">{daysLeft} days left</span>
+          )}
         </div>
       </div>
 
@@ -51,15 +50,15 @@ const Event: React.FC<EventProps> = ({
       </div>
 
       <div className="px-4 py-2">
-        <h2 className="text-lg font-bold text-gray-800 dark:text-white">
-          {title}
-        </h2>
+        <h2 className="text-lg font-bold text-gray-800 dark:text-white">{title}</h2>
         <div className="flex items-center justify-between">
           <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mt-1">
-            <CiLocationOn className="text-lg text-black dark:text-white font-bold" />{location}
+            <CiLocationOn className="text-lg text-black dark:text-white font-bold" />
+            {location}
           </p>
           <p className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 mt-1">
-            <FaCalendarAlt />{date}
+            <FaCalendarAlt />
+            {date}
           </p>
         </div>
         <div className="flex items-center flex-wrap gap-2 mt-4">
@@ -68,7 +67,8 @@ const Event: React.FC<EventProps> = ({
             <span
               key={index}
               className="text-xs font-medium bg-blue-200 text-blue-500 px-2 py-1 rounded"
-            >{tag}
+            >
+              {tag}
             </span>
           ))}
         </div>

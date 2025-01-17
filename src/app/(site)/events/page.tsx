@@ -104,7 +104,7 @@ const ContactPage = () => {
           </span>
         </h2>
         <div className="py-6 gridCards">
-          {events.map((event) => (
+          {events.sort((a,b) => b.daysLeft - a.daysLeft).map((event) => (
             <div
               key={event.id}
               onClick={() => handleEventClick(event.id)}

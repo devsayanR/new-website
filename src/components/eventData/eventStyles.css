@@ -1,24 +1,24 @@
-.eventCards{
+.eventCards {
   width: 100%;
   max-width: 1350px;
   margin: auto;
   padding: 20px;
 }
-.gridCards{
+.gridCards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 15px;
 }
-.bannerSize{
+.bannerSize {
   width: 100%;
   max-width: 1350px;
   margin: auto;
 }
-.gradientBorder{
-  border-bottom: 1px solid;  /* Adjust thickness */
-  border-image: linear-gradient(to right,transparent, rgb(227,232,237),transparent) 1;
-
+.gradientBorder {
+  border-bottom: 1px solid;
+  border-image: linear-gradient(to right, transparent, rgb(227, 232, 237), transparent) 1;
 }
+
 @media (max-width:1171px){
   .gridCards{
     grid-template-columns: 1fr 1fr 1fr;
@@ -38,3 +38,7 @@
   .eventCards{
   }
   }
+
+.py-2.w-full.mx-auto.bg-white.dark\:bg-dark-2.rounded-lg.shadow-md.border.border-gray-700.dark\:border-gray-300.group {
+  height: calc(100% - 16px - 1.481482px); /* 16px for padding, 1.481482px for borders */
+}
