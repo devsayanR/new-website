@@ -1,7 +1,7 @@
 name: Issue Organization Automation
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering
   issues:
     types:
       - opened
@@ -16,34 +16,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v3
-
       - name: Add "needs organization" label if applicable
-        uses: peter-evans/label-issues@v2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          label: 'needs organization'
-          issues: |
-            ${{ github.event.issue.number }}
+        run: |
+          issue_number=${{ github.event.issue.number }}
+          repo=${{ github.repository }}
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${repo}/issues/${issue_number}/labels \
+            -d '{"labels": ["needs organization"]}'
         if: |
-          (github.event.issue.project_card == null || github.event.issue.assignee == null) &&
-          (github.event.issue.milestone != null || github.event.issue.status == 'task')
+          github.event.issue.project_card == null || github.event.issue.assignee == null
 
       - name: Automatically add issue reference in PR description
-        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ github.event_name == 'pull_request' }}
         run: |
-          # Check if the PR description contains a valid issue number reference (e.g., "Fixes #123")
           pr_number="${{ github.event.pull_request.number }}"
           pr_body="${{ github.event.pull_request.body }}"
-          
-          # If there is no issue reference in the PR description, add it
           if [[ ! "$pr_body" =~ "Fixes #" ]]; then
-            # Assume the first issue number is the correct one (could be customized)
-            first_issue_number=$(curl -s https://api.github.com/repos/${{ github.repository }}/issues?state=open | jq '.[0].number')
-            
-            # Add "Fixes" reference to PR
-            curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -d "{\"body\": \"Fixes #${first_issue_number}\"}" \
-              "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}"
+            first_issue_number=$(curl -s \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              https://api.github.com/repos/${{ github.repository }}/issues?state=open | jq '.[0].number')
+            curl -X PATCH \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -d "{\"body\": \"$pr_body\n\nFixes #${first_issue_number}\"}" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}
           fi
