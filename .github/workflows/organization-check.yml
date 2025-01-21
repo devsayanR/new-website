@@ -1,0 +1,49 @@
+name: Issue Organization Automation
+
+on:
+  workflow_dispatch:
+  issues:
+    types:
+      - opened
+      - edited
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  organization_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Add "needs organization" label if applicable
+        uses: peter-evans/label-issues@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          label: 'needs organization'
+          issues: |
+            ${{ github.event.issue.number }}
+        if: |
+          (github.event.issue.project_card == null || github.event.issue.assignee == null) &&
+          (github.event.issue.milestone != null || github.event.issue.status == 'task')
+
+      - name: Automatically add issue reference in PR description
+        if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+        run: |
+          # Check if the PR description contains a valid issue number reference (e.g., "Fixes #123")
+          pr_number="${{ github.event.pull_request.number }}"
+          pr_body="${{ github.event.pull_request.body }}"
+          
+          # If there is no issue reference in the PR description, add it
+          if [[ ! "$pr_body" =~ "Fixes #" ]]; then
+            # Assume the first issue number is the correct one (could be customized)
+            first_issue_number=$(curl -s https://api.github.com/repos/${{ github.repository }}/issues?state=open | jq '.[0].number')
+            
+            # Add "Fixes" reference to PR
+            curl -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -d "{\"body\": \"Fixes #${first_issue_number}\"}" \
+              "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_number}"
+          fi
