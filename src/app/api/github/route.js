@@ -2,7 +2,8 @@
 
 export async function GET(req) {
   try {
-    const response = await fetch('https://devrhylme-foundation.github.io/Project-Api/projects/data.json');
+    const response = await fetch('https://api.github.com/users/DEVRhylme-Foundation/repos');
+    console.log(response);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch repositories: ${response.status}`);
