@@ -16,16 +16,16 @@ const About = () => {
                   DevRhylme Foundation
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
-                Welcome to DevRhylme Foundation, an innovative AI startup at the forefront of Generative AI, OpenCV, and Web 3.0 technologies. We are committed to fostering a thriving developer community and organizing impactful events for diverse clients. Building cutting-edge solutions through collaborative innovation and knowledge-sharing.
+                The DevRhylme Foundation is a non-profit open-source organization driving impactful innovation in OpenCV, Generative AI, and Web 3.0 technologies. We empower a global community of developers and tech enthusiasts to collaborate, create, and lead in shaping the future of technology. Through knowledge-sharing and groundbreaking initiatives, we are making advanced technology accessible, fostering creativity, and delivering transformative solutions.
                   <br /> <br />
-                  Our mission is to empower developers and organizations with the technology to innovate and excel in AI, computer vision, and generative AI.
+                  At DevRhylme Foundation, we aim to empower a global community through innovation in OpenCV, Generative AI, and Web 3.0. We focus on making cutting-edge technologies accessible, fostering collaboration, and driving impactful solutions to shape the future of technology.
                 </p>
 
                 <a
-                  href="/#"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90"
                 >
-                  Know More
+                  Contact Us
                 </a>
               </div>
             </div>
