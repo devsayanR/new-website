@@ -2,16 +2,17 @@
 import { useEffect, useState } from "react";
 import "@/components/projectData/projects.css";
 import PreLoader from "../Common/PreLoader";
+import Card from "./Card";
 
 // Define the repository data structure
-interface Repo {
+export interface Repo {
   id: number;
-  html_url: string;
-  name: string;
-  description: string | null;
-  language: string | null;
-  stargazers_count: number;
-  forks_count: number; // Add forks_count
+  Name: string;
+  Description: string;
+  Language_used: string;
+  Repo_link: string;
+  Docs_link: string;
+  Website_link: string;
 }
 
 const RepoList = () => {
@@ -54,30 +55,7 @@ const RepoList = () => {
   return (
     <div className="projectsCard grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
       {repos.map((repo) => (
-        <a
-        href={repo.html_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        key={repo.id}
-          className="p-6 border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 dark:border-gray-700"
-      >
-          <h2 className="text-xl font-bold mb-2 dark:text-gray-400 text-gray-900">
-            
-              {repo.name}
-            
-          </h2>
-          <p className="text-gray-700 dark:text-[rgb(136,143,155)]">
-            {repo.description || "No description available."}
-          </p>
-          <div className="flex justify-between items-center mt-4">
-            <span className="text-sm text-gray-600 dark:text-[rgb(136,143,155)]">
-              Language: {repo.language || "N/A"}
-            </span>
-            <span className="text-sm text-gray-600 dark:text-[rgb(136,143,155)]">
-              ⭐ {repo.stargazers_count}
-            </span>
-          </div>
-    </a>
+        <Card repo={repo} key={repo.id}/>
       ))}
     </div>
   );
