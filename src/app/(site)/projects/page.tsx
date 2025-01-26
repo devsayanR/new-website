@@ -11,10 +11,9 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-<>
-<Breadcrumb pageName="Product Page" />
-<ProjectData />
-    </>
+    <div className="pt-24">
+      <ProjectData />
+    </div>
   );
 };
 
