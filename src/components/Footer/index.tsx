@@ -1,7 +1,72 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 const Footer = () => {
+  const [privacyPolicy, setPrivacyPolicy] = useState('');
+  const [legalNotice, setLegalNotice] = useState('');
+  const [termsOfService, setTermsOfService] = useState('');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [popupContent, setPopupContent] = useState('');
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const [privacyPolicyRes, legalNoticeRes, termsOfServiceRes] = await Promise.all([
+          fetch('/content/privacy-policy.md'),
+          fetch('/content/legal-notice.md'),
+          fetch('/content/terms-of-service.md'),
+        ]);
+
+        if (!privacyPolicyRes.ok || !legalNoticeRes.ok || !termsOfServiceRes.ok) {
+          throw new Error('Failed to fetch content');
+        }
+
+        const privacyPolicyText = await privacyPolicyRes.text();
+        const legalNoticeText = await legalNoticeRes.text();
+        const termsOfServiceText = await termsOfServiceRes.text();
+
+        setPrivacyPolicy(privacyPolicyText);
+        setLegalNotice(legalNoticeText);
+        setTermsOfService(termsOfServiceText);
+      } catch (error) {
+        console.error('Error fetching content:', error);
+      }
+      
+    };
+
+    fetchContent();
+  }, []);
+
+  const openPopup = (content: string) => {
+    setPopupContent(content);
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+    setPopupContent('');
+  };
+
+  const renderers = {
+    code({ node, inline, className, children, ...props }: { node?: any; inline?: boolean; className?: string; children?: React.ReactNode; [key: string]: any }) {
+      return !inline ? (
+        <SyntaxHighlighter
+          language={String(className || '').replace('language-', '')}
+        >
+          {String(children).replace(/\n$/, '')}
+        </SyntaxHighlighter>
+      ) : (
+        <code className={className} {...props}>
+          {children}
+        </code>
+      );
+    }
+  };
+
   return (
     <footer id="footer"
       className="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]"
@@ -243,53 +308,103 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       <div className="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-2/3 lg:w-1/2">
-              <div className="my-1">
-                <div className="-mx-3 flex items-center justify-center md:justify-start">
-                  <a
-                    href="/#footer"
-                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-                  >
-                    Privacy policy
-                  </a>
-                  <a
-                    href="/#footer"
-                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-                  >
-                    Legal notice
-                  </a>
-                  <a
-                    href="/#footer"
-                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-                  >
-                    Terms of service
-                  </a>
-                </div>
-              </div>
+        <div className="w-full px-4 md:w-2/3 lg:w-1/2">
+          <div className="my-1">
+            <div className="-mx-3 flex items-center justify-center md:justify-start">
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); openPopup(privacyPolicy); }}
+            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+          >
+            Privacy policy
+          </a>
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); openPopup(legalNotice); }}
+            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+          >
+            Legal notice
+          </a>
+          <a
+            href="#"
+            onClick={(e) => { e.preventDefault(); openPopup(termsOfService); }}
+            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+          >
+            Terms of service
+          </a>
             </div>
-            <div className="w-full px-4 md:w-1/3 lg:w-1/2">
-              <div className="my-1 flex justify-center md:justify-end">
-                <p className="text-base text-gray-7">
-                  Designed and Developed by{" "}
-                  <a
-                    href="https://github.com/DEVRhylme-Foundation"
-                    rel="nofollow noopner noreferrer"
-                    target="_blank"
-                    className="text-gray-1 hover:underline"
-                  >
-                    DEVRhylme Technical Team
-                  </a>
-                </p>
-              </div>
-            </div>
+          </div>
+
+          {/* Popup Modal */}
+{isPopupOpen && (
+  <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto relative">
+      {/* Close Button */}
+      <button
+        className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
+        onClick={closePopup}
+        aria-label="Close"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="2"
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      {/* Modal Content */}
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Popup Content</h2>
+      <div className="prose max-w-none text-gray-700">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={renderers}
+        >
+          {popupContent}
+        </ReactMarkdown>
+      </div>
+
+      {/* Footer Button */}
+      <button
+        className="mt-6 px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 w-full sm:w-auto"
+        onClick={closePopup}
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+        </div>
+        <div className="w-full px-4 md:w-1/3 lg:w-1/2">
+          <div className="my-1 flex justify-center md:justify-end">
+            <p className="text-base text-gray-7">
+              © {new Date().getFullYear()} - Designed and Developed by{" "}
+              <a
+                href="https://github.com/DEVRhylme-Foundation"
+                rel="nofollow noopner noreferrer"
+                target="_blank"
+                className="text-gray-1 hover:underline"
+              >
+                DEVRhylme Technical Team
+              </a>
+            </p>
+          </div>
+        </div>
           </div>
         </div>
       </div>
-
       <div>
         <span className="absolute left-0 top-0 z-[-1] aspect-[95/82] w-full max-w-[570px]">
           <Image src="/images/footer/shape-1.svg" alt="shape" fill />
