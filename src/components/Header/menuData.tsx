@@ -57,13 +57,6 @@ const menuData: Menu[] = [
         icon: '/images/icons/youtube.svg',
         newTab: true,
       },
-      {
-        id: 64,
-        title: "Commudle",
-        path: "https://www.commudle.com/communities/devrhylme-foundation",
-        icon: '/images/icons/commudle.svg',
-        newTab: true,
-      },
     ],
   },
 ];
