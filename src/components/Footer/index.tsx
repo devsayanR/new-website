@@ -15,6 +15,7 @@ const Footer = () => {
   const [popupContent, setPopupContent] = useState("");
   const [isPopupOpenprivacy, setIsPopupOpenprivacy] = useState<boolean>(false);
   const [isPopupOpenlegal, setIsPopupOpenlegal] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchContent = async () => {
       try {
@@ -102,8 +103,7 @@ const Footer = () => {
                   alt="logo"
                   width={140}
                   height={30}
-                  className="max-w-full"
-                />
+                  className="max-w-full" />
               </Link>
               <p className="mb-8 max-w-[270px] text-base text-gray-7">
                 Our mission is to build cutting-edge solutions while empowering
@@ -112,22 +112,22 @@ const Footer = () => {
               </p>
               <div className="-mx-3 flex items-center">
                 {/* <a
-                  aria-label="social link"
-                  target="_blank"
-                  href="#"
-                  className="px-3 text-gray-7 hover:text-white"
-                >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 22 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-current"
-                  >
-                    <path d="M16.294 8.86875H14.369H13.6815V8.18125V6.05V5.3625H14.369H15.8128C16.1909 5.3625 16.5003 5.0875 16.5003 4.675V1.03125C16.5003 0.653125 16.2253 0.34375 15.8128 0.34375H13.3034C10.5878 0.34375 8.69714 2.26875 8.69714 5.12187V8.1125V8.8H8.00964H5.67214C5.19089 8.8 4.74402 9.17812 4.74402 9.72812V12.2031C4.74402 12.6844 5.12214 13.1313 5.67214 13.1313H7.94089H8.62839V13.8188V20.7281C8.62839 21.2094 9.00652 21.6562 9.55652 21.6562H12.7878C12.994 21.6562 13.1659 21.5531 13.3034 21.4156C13.4409 21.2781 13.544 21.0375 13.544 20.8312V13.8531V13.1656H14.2659H15.8128C16.2596 13.1656 16.6034 12.8906 16.6721 12.4781V12.4438V12.4094L17.1534 10.0375C17.1878 9.79688 17.1534 9.52187 16.9471 9.24687C16.8784 9.075 16.569 8.90312 16.294 8.86875Z" />
-                  </svg>
-                </a> */}
+      aria-label="social link"
+      target="_blank"
+      href="#"
+      className="px-3 text-gray-7 hover:text-white"
+    >
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 22 22"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="fill-current"
+      >
+        <path d="M16.294 8.86875H14.369H13.6815V8.18125V6.05V5.3625H14.369H15.8128C16.1909 5.3625 16.5003 5.0875 16.5003 4.675V1.03125C16.5003 0.653125 16.2253 0.34375 15.8128 0.34375H13.3034C10.5878 0.34375 8.69714 2.26875 8.69714 5.12187V8.1125V8.8H8.00964H5.67214C5.19089 8.8 4.74402 9.17812 4.74402 9.72812V12.2031C4.74402 12.6844 5.12214 13.1313 5.67214 13.1313H7.94089H8.62839V13.8188V20.7281C8.62839 21.2094 9.00652 21.6562 9.55652 21.6562H12.7878C12.994 21.6562 13.1659 21.5531 13.3034 21.4156C13.4409 21.2781 13.544 21.0375 13.544 20.8312V13.8531V13.1656H14.2659H15.8128C16.2596 13.1656 16.6034 12.8906 16.6721 12.4781V12.4438V12.4094L17.1534 10.0375C17.1878 9.79688 17.1534 9.52187 16.9471 9.24687C16.8784 9.075 16.569 8.90312 16.294 8.86875Z" />
+      </svg>
+    </a> */}
                 <a
                   aria-label="social link"
                   target="_blank"
@@ -326,8 +326,52 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
-        <div className="container">
+      {/* Substack Newsletter Embed */}
+      <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 shadow-xl container mx-auto px-4 py-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="lg:w-1/2 text-left max-w-xl ml-4 mb-4 lg:mb-0">
+            <h3 className="text-3xl font-bold text-white mb-4">
+              Subscribe to Our Newsletter
+            </h3>
+            <p className="text-gray-7 text-lg leading-relaxed mb-6">
+              Get the latest updates on our projects, tech insights, and industry news
+              delivered straight to your inbox. Join our growing community of innovators
+              and stay ahead of the curve.
+            </p>
+            <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                </svg>
+                <span className="text-gray-7">Weekly Updates</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+              </svg>
+              <span className="text-gray-7">Exclusive Content</span>
+            </div>
+          </div>
+        </div>
+        <div className="lg:w-1/2">
+          <div className="rounded-xl p-6">
+            <iframe
+              src="https://devrhylmenewsletter.substack.com/embed"
+              className="w-full h-[320px]"
+              style={{
+                border: "none",
+                background: "transparent",
+                borderRadius: "8px"
+              }}
+              frameBorder="0"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div className="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
+      <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-2/3 lg:w-1/2">
               <div className="my-1">
@@ -348,9 +392,8 @@ const Footer = () => {
               </div>
               <PrivacyPolicyPopup
                 isOpen={isPopupOpenprivacy}
-                onClose={() => setIsPopupOpenprivacy(false)}
-              />
-              <LegalNoticePopup isOpen={isPopupOpenlegal} onClose={()=> setIsPopupOpenlegal(false)}/>
+                onClose={() => setIsPopupOpenprivacy(false)} />
+              <LegalNoticePopup isOpen={isPopupOpenlegal} onClose={() => setIsPopupOpenlegal(false)} />
               {/* Popup Modal */}
               {isPopupOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-60">
@@ -372,8 +415,7 @@ const Footer = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
+                          d="M6 18L18 6M6 6l12 12" />
                       </svg>
                     </button>
 
@@ -418,8 +460,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
+      </div><div>
         <span className="absolute left-0 top-0 z-[-1] aspect-[95/82] w-full max-w-[570px]">
           <Image src="/images/footer/shape-1.svg" alt="shape" fill />
         </span>
