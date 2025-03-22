@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import PreLoader from "@/components/Common/PreLoader";
 import Loading from "@/components/Common/PreLoader";
 import Script from "next/script";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
+
 
 export default function RootLayout({
   children,
@@ -47,6 +49,7 @@ export default function RootLayout({
      </head>
       
       <body>
+      <UserProvider>
         {loading ? (
           <PreLoader />
         ) : (
@@ -64,6 +67,7 @@ export default function RootLayout({
             </ThemeProvider>
           </SessionProvider>
         )}
+        </UserProvider>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-"use client"; // Only for Next.js App Router
+"use client";
 import { useEffect, useState } from "react";
 import "@/components/projectData/projects.css";
 import PreLoader from "../Common/PreLoader";
@@ -15,18 +15,22 @@ export interface Repo {
   Website_link: string;
 }
 
-const RepoList = () => {
-  const [repos, setRepos] = useState<Repo[]>([]); // Specify Repo type for the array
-  const [loading, setLoading] = useState(true); // Add loading state
+const RepoList: React.FC = () => {
+  const [repos, setRepos] = useState<Repo[]>([]);
+  const [filteredRepos, setFilteredRepos] = useState<Repo[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedLanguage, setSelectedLanguage] = useState<string>("");
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch("/api/github"); // Ensure endpoint is correct
+        const response = await fetch("/api/github");
         if (!response.ok) throw new Error("Network response was not ok");
-        const data: Repo[] = await response.json(); // Cast the response data to Repo[]
+        const data: Repo[] = await response.json();
         setRepos(data);
+        setFilteredRepos(data);
       } catch (err) {
         if (err instanceof Error) {
           setError(err.message);
@@ -34,29 +38,79 @@ const RepoList = () => {
           setError("An unknown error occurred");
         }
       } finally {
-        setTimeout(() => setLoading(false), 1000); // Add 1-second delay
+        setTimeout(() => setLoading(false), 1000);
       }
     };
-
     fetchRepos();
   }, []);
 
+  useEffect(() => {
+    const debounceFilter = setTimeout(() => {
+      let filtered = repos;
+      if (searchQuery) {
+        filtered = filtered.filter((repo) =>
+          repo.Name.toLowerCase().includes(searchQuery.toLowerCase()),
+        );
+      }
+      if (selectedLanguage) {
+        filtered = filtered.filter(
+          (repo) =>
+            repo.Language_used.toLowerCase() === selectedLanguage.toLowerCase(),
+        );
+      }
+      setFilteredRepos(filtered);
+    }, 300);
+
+    return () => clearTimeout(debounceFilter);
+  }, [searchQuery, selectedLanguage, repos]);
+
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <PreLoader /> {/* Use your custom Loader component */}
+      <div className="flex h-screen items-center justify-center">
+        <PreLoader />
       </div>
     );
   }
 
-  if (error) return <div>Error: {error}</div>;
-  if (!repos.length) return <div>No repositories found.</div>;
+  if (error)
+    return <div className="text-center text-red-500">Error: {error}</div>;
+  if (!filteredRepos.length)
+    return <div className="text-center">No repositories found.</div>;
 
   return (
-    <div className="projectsCard grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {repos.map((repo) => (
-        <Card repo={repo} key={repo.id}/>
-      ))}
+    <div className="mx-auto max-w-7xl p-6">
+      
+      {/* Search and Filter Controls */}
+      <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <input
+          type="text"
+          placeholder="Search projects..."
+          className="w-full rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-1/3"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <select
+          className="w-full rounded-lg border p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 md:w-1/4"
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          <option value="">All Technologies</option>
+          {Array.from(new Set(repos.map((repo) => repo.Language_used))).map(
+            (lang) => (
+              <option key={lang} value={lang}>
+                {lang}
+              </option>
+            ),
+          )}
+        </select>
+      </div>
+      
+      {/* Project Cards */}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {filteredRepos.map((repo) => (
+          <Card repo={repo} key={repo.id} />
+        ))}
+      </div>
     </div>
   );
 };

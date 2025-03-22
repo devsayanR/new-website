@@ -8,7 +8,7 @@ import Event from "@/components/eventData/eventCard";
 import "@/components/eventData/eventStyles.css";
 import { useRouter } from "next/navigation";
 import PreLoader from "../../../components/Common/PreLoader"; // Import your PreLoader component
-
+import { useUser } from "@auth0/nextjs-auth0/client";
 // Define the EventData interface with all fields required (no optional fields)
 interface EventData {
   id: string;
@@ -32,7 +32,6 @@ const ContactPage = () => {
 
   useEffect(() => {
     const eventsRef = ref(rtdb, "events");
-
     const unsubscribe = onValue(eventsRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
@@ -111,14 +110,15 @@ const ContactPage = () => {
               className="cursor-pointer"
             >
               <Event
-                key={event.id}
+                id={event.id}
                 imageUrl={event.coverImage || "/images/event/event1.jpeg"}
                 title={event.title}
                 date={event.date}
                 location={event.location}
                 tags={event.tags || []}
                 eventStatus={event.eventStatus}
-                daysLeft={event.daysLeft}
+                daysLeft={event.daysLeft} 
+                onEventClick={handleEventClick}             
               />
             </div>
           ))}
