@@ -60,14 +60,14 @@ const Signin = () => {
               <div className="mb-10 text-center">
                 <Link href="/" className="mx-auto inline-block max-w-[160px]">
                   <Image
-                    src="/images/logo/logo.svg"
+                    src="/images/logos/logo-lightbg.svg"
                     alt="logo"
                     width={140}
                     height={30}
                     className="dark:hidden"
                   />
                   <Image
-                    src="/images/logo/logo-white.svg"
+                    src="/images/logos/logo-darkbg.svg"
                     alt="logo"
                     width={140}
                     height={30}
